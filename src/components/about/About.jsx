@@ -1,11 +1,64 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./about.scss";
-import { motion } from "framer-motion";
+import { animate, motion, useInView } from "framer-motion";
+
+const variants = {
+    initial:{
+        x:-500,
+        opacity: 0,
+    },
+    animate:{
+        x:0,
+        opacity:1,
+        transition: {
+            duration:2,
+            staggerChildren: 0.1
+        }
+    }
+}
+
+const textContainerVariants ={
+    initial:{
+        x:1500,
+        opacity: 0,
+    },
+    animate:{
+        x:0,
+        opacity:1,
+        transition: {
+            duration:1,
+            staggerChildren: 0.1
+        }
+    }
+}
+
+const aboutTextContainerVariants ={
+    initial:{
+        y:1500,
+        opacity: 0,
+    },
+    animate:{
+        y:0,
+        opacity:1,
+        transition: {
+            duration:1,
+            staggerChildren: 0.1
+        }
+    }
+}
+
+//Bu sayfayı yukarıdan aşağı doğru kaydırırken bir sorun yaşanıyor, takılma gibi. Bunun sebebi textContainer'ın sağ taraftan sola doğru animasyon edilmesi olabilir.
+//Bunu engellemek için tüm hareketli öğeleri soldan sola doğru hareket ettir. yani initial y:-500 animate y:0 
 
 const About = () => {
+
+    const ref = useRef();
+    const isInView = useInView(ref,{margin:"-100px"});
+
   return (
-    <motion.div className="about">
-      <motion.div className="textContainer">
+    <motion.div className="about" variants={variants} initial="initial" whileInView="animate">
+        
+      <motion.div className="textContainer" variants={variants}>
         <p>
           Dreams
           <br /> Woven in Code
@@ -13,7 +66,7 @@ const About = () => {
         <hr />
       </motion.div>
 
-      <motion.div className="titleContainer">
+      <motion.div className="titleContainer" variants={variants}>
         <div className="title">
           <h1>
             <b>Saffet</b> Ramazan Kaban
@@ -27,7 +80,7 @@ const About = () => {
         </div>
       </motion.div>
 
-      <motion.div className="aboutTextContainer">
+      <motion.div className="aboutTextContainer" variants={variants}>
         <div className="aboutText">
           <h2>In short</h2>
           <br />
