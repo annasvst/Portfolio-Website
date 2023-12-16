@@ -37,7 +37,7 @@ const Contact = () => {
       )
       .then(
         (result) => {
-          setError(false);
+          setSuccess(true);
         },
         (error) => {
           setError(true);
