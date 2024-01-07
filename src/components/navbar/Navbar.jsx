@@ -2,6 +2,8 @@ import React from "react";
 import "./Navbar.scss";
 import { motion } from "framer-motion";
 import Sidebar from "../sidebar/Sidebar";
+import { Blog } from "../blog/Blog";
+import {Routes, Route, Link} from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -22,6 +24,12 @@ const Navbar = () => {
           className="social"
         >
           <a className="blogButton" href="">Blog</a>
+          <Link className="blogButton" to="/blog">Blog</Link>
+
+          <Routes>
+            <Route path='path' element={<Blog/>}/>
+          </Routes>
+
           <a href="https://github.com/Saffet01" target="_blank">
             <img src="/github.png" alt="Github Profile Link" />
           </a>
