@@ -23,8 +23,7 @@ const Navbar = () => {
           transition={{ duration: 0.4 }}
           className="social"
         >
-          <a className="blogButton" href="">Blog</a>
-          <Link className="blogButton" to="/blog">Blog</Link>
+            <Link className="blogButton" to="/blog">Blog</Link>
 
           <Routes>
             <Route path='path' element={<Blog/>}/>
