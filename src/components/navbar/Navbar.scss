@@ -26,7 +26,21 @@
 
         .social{
             display: flex;
+            align-items: center;
             gap: 20px;
+
+            .blogButton{
+                font-size: 16px;
+                letter-spacing: 1.2px;
+                color: white;
+                background-color: rgb(86, 47, 86);;
+                padding: 10px;
+                border-radius: 6px;
+            }
+
+            .blogButton:hover{
+                scale: 1.1;
+            }
 
             img{
                 width: 30px;
